@@ -1,0 +1,36 @@
+<div>
+  <h1> Welcome to ZoMAto</h1>
+</div>
+
+<div class="container">
+  <input #city type="text">
+  <button (click) = "getLatLong(city.value)"> City </button>
+</div>
+<div class="container">
+  <div class="input-group mb-3">
+    <input type="text" class="form-control" [(ngModel)] = "name" placeholder="Search Restaurant,cuisine or dishes" aria-label="Recipients username" aria-describedby="button-addon2">
+    <br/>
+    <br/>
+    <div class="input-group-append">
+        <button (click)="onSearch()" class="btn btn-online-secondary" type="button" id="button-addon2">Search</button> 
+    </div>
+</div>
+</div>
+<div class="container1">
+<div *ngIf = "error">
+    <div class="alert alert-danger" role="alert">
+        {{ error }}
+    </div>
+  </div>
+<div class ="style" *ngFor = "let data of results;">
+    <div class="card" style="width: 18rem;">
+        <img src="{{data.restaurant.thumb}}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{ data.restaurant.name}}</h5>
+          <p class="card-text">{{data.restaurant.location.address}}</p>
+            <p class="card-text">{{data.restaurant.phone_numbers}}</p>          
+            <a href="#" class="btn btn-primary"><button>Order</button></a>
+        </div>
+      </div>
+</div>
+</div>
